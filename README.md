@@ -1,4 +1,4 @@
-## xa.sh, a cross-assembler written in a Bourne shell script
+## xa.sh, a cross-assembler written in Bourne shell script
 
 An entire assembler in a shell script.  It uses a simple system for writing binaries, based on the POSIX printf statement.  It does numeric conversions using **sed** and **dc**, and inline math using **expr**.  It handles something like the standard *Intel* assembly syntax -- with some limitations -- by preprocessing the source into something that looks enough like a shell script and importing a set of functions corresponding to various CPU instructions in the target architecture.  It currently implements an 8080 core.  Assembly is done using a standard two-pass model; the symbol table is written into shell variables on the first pass, and used to generate correct code on the second.
 
