@@ -1,6 +1,6 @@
 ## xa.sh, a cross-assembler written in a Bourne shell script
 
-An entire assembler in a shell script.  It starts with a basic system for writing out binaries, based on the POSIX printf statement.  It does numeric conversions using **sed** and **dc**, and inline math using **expr**.  It has handlers for something like the standard *Intel* assembly syntax -- with some limitations -- preprocessing the source into something that looks enough like a shell script that it can be just evaluated in the shell, using a set of functions corresponding to various CPU instructions.  It currently implements an 8080 core.  Assembly is done using a standard two-pass model; the symbol table is written into shell variables on the first pass, symbols in which are substituted in during the second pass.
+An entire assembler in a shell script.  It uses a simple system for writing binaries, based on the POSIX printf statement.  It does numeric conversions using **sed** and **dc**, and inline math using **expr**.  It handles something like the standard *Intel* assembly syntax -- with some limitations -- by preprocessing the source into something that looks enough like a shell script and importing a set of functions corresponding to various CPU instructions in the target architecture.  It currently implements an 8080 core.  Assembly is done using a standard two-pass model; the symbol table is written into shell variables on the first pass, and used to generate correct code on the second.
 
 As it stands, the whole thing is a bit over a thousand lines of shell code, in eighty-some files.  It's fairly modular, and will load different machine cores on command, so given a bit more work, it can target multiple architectures.  6502 and 6809 are likely candidates, as are Z80 and 8085 extensions to the 8080 instruction set.
 
@@ -18,7 +18,7 @@ The repository is organized in the same way the script wants the files organized
 
 ### Installation
 
-It's a shell script.  Dump it somewhere on a Unix system and make sure **xa.sh** is executable.  You can probably run it right out of a clone of the repository.  By default the script expects to be in a directory *<somewhere/bin*, relative to which there is a *<somewhere>/lib/xa.sh* directory with all the supporting bits and pieces.  You can put it in its own directory and run it in place, or you can dump the library directory in */usr/local/lib* and the binary into */usr/local/bin* -- something like that.
+It's a shell script.  Dump it somewhere on a Unix system and make sure **xa.sh** is executable.  You can probably run it right out of a clone of the repository.  By default the script expects to be in a directory *<somewhere/bin>*, relative to which there is a *<somewhere>/lib/xa.sh>* directory with all the supporting bits and pieces.  You can put it in its own directory and run it in place, or you can dump the library directory in */usr/local/lib* and the binary into */usr/local/bin* -- something like that.
 
 ### Usage
 
