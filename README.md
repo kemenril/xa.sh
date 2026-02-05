@@ -72,7 +72,7 @@ Processing of input files is not the most robust thing.  There are a few quirks,
 
    * Because the assembly source is evaluated by the shell, hexadecimal numbers using a notation in the style of $0ABC will likely not work without some escaping.  You can use a notation in the form of 0ABCh or 0xABCD instead, which is more shell-safe.
    * Because *expr* is used to handle inline math, spacing between identifiers and numbers and operations is required.  **MVI A, LOOP+4** will likely not work, but **MVI A, LOOP + 4** probably will.  In fact, if we're being honest, the comma is accepted between arguments because it's conventional, but it is mostly ignored.  The first argument is often a simple register designation or the like, and is easy to differentiate from everything else.
-   * Because it's a wildcard in the shell, the use of * to set and get the valie of the PC is not implemented.  You can use *ORG* to set the counter and *PC* to get its current value, which avoids expansion-related trouble.
+   * Because it's a wildcard in the shell, the use of * to set and get the value of the PC is not implemented.  You can use *ORG* to set the counter and *PC* to get its current value, which avoids expansion-related trouble.
    * Labels are global and should not be redefined.  If you redefine a label, all references to that label will probably use the most recent definition.
 
 
