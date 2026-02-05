@@ -1,8 +1,8 @@
 ## xa.sh, a cross-assembler written in a Bourne shell script
 
-An entire assembler in a shell script.  It starts with a basic system for writing out binaries based on the POSIX printf statement, does numeric conversions using **sed** and **dc**, and inline math using **expr**.  On top of that, it has handlers for something like the standard *intel* assembly syntax -- with some limitations -- preprocessing the source into something that looks enough like a shell script that it can be just evaluated against an environment with a library of functions loaded corresponding to various CPU instructions.  It currently implements an 8080 core.  Assembly is done using a pretty standard two-pass model; the symbol table is generated into shell variables on the first pass, symbols in which are substituted in for the second pass.
+An entire assembler in a shell script.  It starts with a basic system for writing out binaries, based on the POSIX printf statement.  It does numeric conversions using **sed** and **dc**, and inline math using **expr**.  It has handlers for something like the standard *Intel* assembly syntax -- with some limitations -- preprocessing the source into something that looks enough like a shell script that it can be just evaluated in the shell, using a set of functions corresponding to various CPU instructions.  It currently implements an 8080 core.  Assembly is done using a standard two-pass model; the symbol table is written into shell variables on the first pass, symbols in which are substituted in during the second pass.
 
-As it stands, the whole thing is something a bit over a thousand lines of shell code, in eighty-some files.  It's fairly modular, and will load different machine cores on command, so given a bit more work, it can target multiple architectures.  6502 and 6809 are likely candidates, as are Z80 and 8085 extensions to the 8080 instruction set.
+As it stands, the whole thing is a bit over a thousand lines of shell code, in eighty-some files.  It's fairly modular, and will load different machine cores on command, so given a bit more work, it can target multiple architectures.  6502 and 6809 are likely candidates, as are Z80 and 8085 extensions to the 8080 instruction set.
 
 ### But why?
 
@@ -14,7 +14,7 @@ I would think the only hard requirement is something like Unix from the nineties
 
 ### Repository layout
 
-The repository is organized in the same way the script wants the files organized on your disk.  The main script is in **bin/xa.sh**, the main supporting code is in a set of files in **lib/xa.sh/common**, and the instruction maps are in **lib/xa.sh/core**.  Some simple example code is in **examples**.
+The repository is organized in the same way the script wants the files organized on your disk.  The main script is in **bin/xa.sh**, the main supporting code is in **lib/xa.sh/common**, and the instruction maps are in **lib/xa.sh/core**.  Some simple example code is in **examples**.
 
 ### Installation
 
