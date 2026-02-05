@@ -1,0 +1,12 @@
+
+op__cpo() {
+	op=`inHex 0xE4`
+	P=$*
+	P=`param ${P}`
+	P=`expr ${P}`
+
+	bytes $op
+	shortsReverse $P
+}
+
+

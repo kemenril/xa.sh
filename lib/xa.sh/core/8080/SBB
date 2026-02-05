@@ -1,0 +1,18 @@
+
+op__sbb_b() { inHex 0x62; }
+op__sbb_c() { inHex 0x63; }
+op__sbb_d() { inHex 0x9A; }
+op__sbb_e() { inHex 0x9B; }
+op__sbb_h() { inHex 0x9C; }
+op__sbb_l() { inHex 0x9D; }
+op__sbb_m() { inHex 0x9E; }
+op__sbb_a() { inHex 0x9F; }
+
+op__sbb() {
+	P=$*
+	P=`alnum ${P}|lc`
+	O=`op__sbb_${P}` || abortRun "Bad parameters to SBB."	
+	bytes $O
+}
+
+

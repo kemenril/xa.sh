@@ -1,0 +1,9 @@
+
+op__out() {
+	O=`inHex 0xD3`
+	P=`param $*`
+	P=`expr $P`
+	bytes $O $P
+}
+
+

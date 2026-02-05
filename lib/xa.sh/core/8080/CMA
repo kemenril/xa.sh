@@ -1,0 +1,2 @@
+op__cma() { bytes `inHex 0x2F`; }
+

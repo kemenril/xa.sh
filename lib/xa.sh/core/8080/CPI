@@ -1,0 +1,9 @@
+
+op__cpi() {
+	O=`inHex 0xFE`
+	P=`param $*`
+	P=`expr $P`
+	bytes $O $P
+}
+
+

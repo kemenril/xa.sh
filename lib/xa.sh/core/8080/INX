@@ -1,0 +1,14 @@
+
+op__inx_b() { inHex 0x03; }
+op__inx_d() { inHex 0x0D; }
+op__inx_h() { inHex 0x17; }
+op__inx_sp() { inHex 0x21; }
+
+op__inx() {
+	P=$*
+	P=`alnum ${P}|lc`
+	O=`op__inx_${P}` || abortRun "Bad parameters to INX."	
+	bytes $O
+}
+
+

@@ -1,0 +1,2 @@
+op__rar() { bytes `inHex 0x1F`; }
+

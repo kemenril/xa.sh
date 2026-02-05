@@ -1,0 +1,12 @@
+
+op__jp() {
+	op=`inHex 0xF2`
+	P=$*
+	P=`param ${P}`
+	P=`expr ${P}`
+
+	bytes $op
+	shortsReverse $P
+}
+
+

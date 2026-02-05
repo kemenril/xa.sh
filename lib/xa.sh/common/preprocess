@@ -1,0 +1,45 @@
+
+#We may or may not ever decide to run a real preprocessor, but we use this
+# to strip out comments, and do some simple formatting
+
+#What it says on the tin
+stripComments() {
+	sed -e 's/;.*$//g'
+}
+
+#Blank segments, for use on final output after collapse of newlines
+stripBlanks() {
+	sed -e 's/\([[:space:]]*;[[:space:]]*\)\{1,\}/ ; /g' -e 's/^[[:space:]]*;//'
+}
+
+#The LABEL: syntax is hard for Bourne to handle reasonably, so we replace it
+# with a label directive, and here is the function which handles that.
+genLabels() {
+	sed -e 's/\([[:alnum:]]\{1,\}\):/label \1\n/g'
+}
+
+#We support case-insensitivity in mnemonics by just lower-casing everything.
+modMnemonics() {
+	awk '{printf "op__%s%s",tolower($1),OFS; for (f = 2;f<=NF;f++) printf "%s%s",$f,OFS;print ""}' |sed -e 's/^op__;//g'
+}
+
+#Add function calls to the beginning of each line to make it possible to track
+#where we are in the source file.
+countLines() {
+	sed -e 's/$/; newLine/g'
+}
+
+#Replace the newlines with a semicolon to so that when the structure collapses
+# because it has been read into a variable, you can still evaluate it.
+termLines ()  {
+	sed -e 's/$/;/g'
+}
+
+preprocess () {
+	#We'll store this in a variable anyway, which means we lose newlines,
+	# so do it now and strip the blanks, because sed is dumb.
+	OUT=`stripComments|countLines|genLabels|modMnemonics|termLines`
+	echo ${OUT} |stripBlanks
+}
+
+

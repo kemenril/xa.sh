@@ -1,0 +1,9 @@
+
+op__in() {
+	O=`inHex 0xDB`
+	P=`param $*`
+	P=`expr $P`
+	bytes $O $P
+}
+
+

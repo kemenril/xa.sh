@@ -1,0 +1,3 @@
+op__sphl() { bytes `inHex 0xF9`; }
+
+

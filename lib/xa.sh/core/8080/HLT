@@ -1,0 +1,2 @@
+op__hlt() { bytes `inHex 0x4C`; }
+

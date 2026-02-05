@@ -1,0 +1,60 @@
+#It's going to be easier just to convert all the odd notations into base 10,
+#  though personally I'd prefer hex, I think.
+
+inHex() {
+	CMD="16 i"	#Set the base
+	for N in $*;do 	#... and just print each one.
+		N=`echo ${N}|sed -e 's/0x//g'|uc|sed -e 's/[^A-F0-9]//g'`
+		CMD="${CMD} ${N} p"
+	done
+	echo ${CMD}|dc
+}
+
+inOctal() {
+	CMD="8 i"	#Set the base
+	for N in $*;do 	#... print each one again.
+		N=`echo ${N} | sed -e 's/[^0-7]//g'`
+		CMD="${CMD} ${N} p"
+	done
+	echo ${CMD}|dc	
+}
+
+inBinary() {
+	CMD="2 i"	#Set the base
+	for N in $*;do	#... and now print.
+		N=`echo ${N}|sed -e 's/[^01]//g'`
+		CMD="${CMD} ${N} p"
+	done
+	echo ${CMD}|dc
+}
+
+params() {
+	for N in $*;do
+		#Not foolproof, but we're a bit limited by the glob syntax
+		case ${N} in
+			*[0-9A-Fa-f][0-9A-Fa-f][hH] | \$[0-9A-Fa-f][0-9A-Fa-f]* | 0[xX][0-9A-Fa-f][0-9A-Fa-f]* )
+				inHex ${N}
+				;;
+			*[0-7][Oo] | *[0-7][Qq] | \\[0-7]*)
+				inOctal ${N}
+				;;
+			[01][01][01][01][01][01][01][01][Bb] | %[01][01][01][01][01][01][01][01]* | \&[Bb][01][01][01][01][01][01][01][01]*)
+				inBinary ${N}
+				;;
+			*)
+				#Maybe it's a label
+				eval "LAD=\"\$addr__${N}\""
+				if [ -n "$LAD" ];then
+					echo "$LAD"
+				else
+					echo ${N}
+				fi
+				;;
+		esac
+	done
+}
+
+param() {
+	params $*
+}
+

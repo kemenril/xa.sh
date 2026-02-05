@@ -1,0 +1,3 @@
+op__rp() { bytes `inHex 0xF0`; }
+
+

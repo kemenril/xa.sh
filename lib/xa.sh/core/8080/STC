@@ -1,0 +1,2 @@
+op__stc() { bytes `inHex 0x25`; }
+

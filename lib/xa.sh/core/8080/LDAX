@@ -1,0 +1,12 @@
+
+op__ldax_b() { inHex 0x0A; }
+op__ldax_d() { inHex 0x1A; }
+
+op__ldax() {
+	P=$*
+	P=`alnum ${P}|lc`
+	O=`op__ldax_${P}` || abortRun "Bad parameters to LDAX."	
+	bytes $O
+}
+
+

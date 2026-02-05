@@ -1,0 +1,20 @@
+op__lxi_b() { inHex 0x01; }
+op__lxi_d() { inHex 0x0B; }
+op__lxi_h() { inHex 0x15; }
+op__lxi_sp() { inHex 0x1F; }
+
+op__lxi() {
+	ops=`echo $*|sed -e 's/[[:space:],]\+/ /g'`
+	ops=`lc $ops`
+	R=`echo ${ops}|cut -d' ' -f 1`
+	R=`alnum ${R}`
+	P=`echo ${ops}|cut -d' ' -f 2-`
+	P=`param ${P}`
+        P=`expr ${P}`
+
+	i=`op__lxi_${R}` || abortRun "Bad parameters to LXI"
+	bytes $i
+	shortsReverse $P
+}
+
+

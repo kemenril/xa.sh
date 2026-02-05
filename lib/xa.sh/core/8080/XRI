@@ -1,0 +1,9 @@
+
+op__xri() {
+	O=`inHex 0xEE`
+	P=`param $*`
+	P=`expr $P`
+	bytes $O $P
+}
+
+

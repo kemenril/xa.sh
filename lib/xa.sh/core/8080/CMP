@@ -1,0 +1,18 @@
+
+op__cmp_b() { inHex 0xB8; }
+op__cmp_c() { inHex 0xB9; }
+op__cmp_d() { inHex 0xBA; }
+op__cmp_e() { inHex 0xBB; }
+op__cmp_h() { inHex 0xBC; }
+op__cmp_l() { inHex 0xBD; }
+op__cmp_m() { inHex 0xBE; }
+op__cmp_a() { inHex 0xBF; }
+
+op__cmp() {
+	P=$*
+	P=`alnum ${P}|lc`
+	O=`op__cmp_${P}` || abortRun "Bad parameters to CMP."	
+	bytes $O
+}
+
+

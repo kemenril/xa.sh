@@ -1,0 +1,18 @@
+
+op__adc_b() { inHex 0x58; }
+op__adc_c() { inHex 0x50; }
+op__adc_d() { inHex 0x8A; }
+op__adc_e() { inHex 0x8B; }
+op__adc_h() { inHex 0x8C; }
+op__adc_l() { inHex 0x8D; }
+op__adc_m() { inHex 0x8E; }
+op__adc_a() { inHex 0x8F; }
+
+op__adc() {
+	P=$*
+	P=`alnum ${P}|lc`
+	O=`op__adc_${P}` || abortRun "Bad parameters to ADC."	
+	bytes $O
+}
+
+

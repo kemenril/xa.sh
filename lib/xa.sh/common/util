@@ -1,0 +1,51 @@
+
+
+#Print to stderr:
+errmsg () {
+        echo $* >&2
+}
+
+
+# Exit due to error
+abortRun() {
+	errmsg $*
+	errmsg "Aborting run. Source line: ${sourceLine}"
+	exit 1
+}
+
+#Lowercase
+lc () {
+	if [ -z "$1" ];then
+		tr 'A-Z' 'a-z'
+	else
+		for S in $*;do
+			echo ${S}|tr 'A-Z' 'a-z'
+		done
+	fi
+}
+
+#Uppercase
+uc () {
+	if [ -z "$1" ];then
+		tr 'a-z' 'A-Z'
+	else
+		for S in $*;do
+			echo ${S}|tr 'a-z' 'A-Z'
+		done
+	fi
+}
+
+#Strip everything except alphanumerics
+alnum () {
+	if [ -z "$1" ];then
+		sed -e 's/[^[:alnum:]]//g'
+	else
+		echo $*|sed -e 's/[^[:alnum:]]//g'	
+	fi
+}
+
+#Count lines in a shell variable.  We don't yet use this, but maybe
+newLine() {
+        sourceLine=`expr ${sourceLine} + 1`
+}
+

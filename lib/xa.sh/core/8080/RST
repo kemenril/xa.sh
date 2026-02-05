@@ -1,0 +1,19 @@
+
+op__rst_0() { inHex 0xC7; }
+op__rst_1() { inHex 0xCF; }
+op__rst_2() { inHex 0xD7; }
+op__rst_3() { inHex 0xDF; }
+op__rst_4() { inHex 0xE7; }
+op__rst_5() { inHex 0xEF; }
+op__rst_6() { inHex 0xF7; }
+op__rst_7() { inHex 0xFF; }
+
+op__rst() {
+	P=$*
+	P=`param ${P}`
+	P=`expr ${P}`
+	O=`op__rst_${P}` || abortRun "Bad parameters to RST."	
+	bytes $O
+}
+
+

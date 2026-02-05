@@ -1,0 +1,3 @@
+op__rc() { bytes `inHex 0xD8`; }
+
+

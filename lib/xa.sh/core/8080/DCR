@@ -1,0 +1,18 @@
+
+op__dcr_b() { inHex 0x05; }
+op__dcr_c() { inHex 0x0D; }
+op__dcr_d() { inHex 0x0F; }
+op__dcr_e() { inHex 0x1D; }
+op__dcr_h() { inHex 0x19; }
+op__dcr_l() { inHex 0x2D; }
+op__dcr_m() { inHex 0x23; }
+op__dcr_a() { inHex 0x3D; }
+
+op__dcr() {
+	P=$*
+	P=`alnum ${P}|lc`
+	O=`op__dcr_${P}` || abortRun "Bad parameters to DCR."	
+	bytes $O
+}
+
+

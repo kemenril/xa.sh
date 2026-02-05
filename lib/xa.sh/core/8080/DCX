@@ -1,0 +1,14 @@
+
+op__dcx_b() { inHex 0x0B; }
+op__dcx_d() { inHex 0x1B; }
+op__dcx_h() { inHex 0x2B; }
+op__dcx_sp() { inHex 0x3B; }
+
+op__dcx() {
+	P=$*
+	P=`alnum ${P}|lc`
+	O=`op__dcx_${P}` || abortRun "Bad parameters to DCX."	
+	bytes $O
+}
+
+

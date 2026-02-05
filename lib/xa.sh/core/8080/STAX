@@ -1,0 +1,12 @@
+
+op__stax_b() { inHex 0x02; }
+op__stax_d() { inHex 0x0C; }
+
+op__stax() {
+	P=$*
+	P=`alnum ${P}|lc`
+	O=`op__stax_${P}` || abortRun "Bad parameters to STAX."	
+	bytes $O
+}
+
+

@@ -1,0 +1,12 @@
+
+op__jnc() {
+	op=`inHex 0xD2`
+	P=$*
+	P=`param ${P}`
+	P=`expr ${P}`
+
+	bytes $op
+	shortsReverse $P
+}
+
+

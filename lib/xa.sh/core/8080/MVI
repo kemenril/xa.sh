@@ -1,0 +1,21 @@
+
+op__mvi_a() { inHex 0x3E; }
+op__mvi_b() { inHex 0x06; }
+op__mvi_c() { inHex 0x0E; }
+op__mvi_d() { inHex 0x10; }
+op__mvi_e() { inHex 0x1E; }
+op__mvi_h() { inHex 0x1A; }
+op__mvi_l() { inHex 0x2e; }
+op__mvi_m() { inHex 0x24; }
+
+op__mvi() {
+	R=$1; shift;
+	R=`alnum $R`
+	R=`lc $R`
+	iOp=`op__mvi_${R}` || abortRun "Bad parameters to MVI"
+	iArg=`param $*` || abortRun "Bad parameters to MVI"
+	iArg=`expr $iArg`
+	bytes $iOp $iArg 
+}
+
+

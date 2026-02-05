@@ -1,0 +1,9 @@
+
+op__ori() {
+	O=`inHex 0xF6`
+	P=`param $*`
+	P=`expr $P`
+	bytes $O $P
+}
+
+

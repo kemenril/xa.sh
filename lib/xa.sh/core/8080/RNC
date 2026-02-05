@@ -1,0 +1,3 @@
+op__rnc() { bytes `inHex 0xCF`; }
+
+

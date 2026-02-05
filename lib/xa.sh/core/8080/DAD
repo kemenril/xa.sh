@@ -1,0 +1,14 @@
+
+op__dad_b() { inHex 0x09; }
+op__dad_d() { inHex 0x13; }
+op__dad_h() { inHex 0x1D; }
+op__dad_sp() { inHex 0x27; }
+
+op__dad() {
+	P=$*
+	P=`alnum ${P}|lc`
+	O=`op__dad_${P}` || abortRun "Bad parameters to DAD."	
+	bytes $O
+}
+
+

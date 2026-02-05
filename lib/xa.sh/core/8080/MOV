@@ -1,0 +1,80 @@
+op__mov_b_b() { inHex 0x50; }
+op__mov_b_c() { inHex 0x51; }
+op__mov_b_d() { inHex 0x52; }
+op__mov_b_e() { inHex 0x53; }
+op__mov_b_h() { inHex 0x54; }
+op__mov_b_l() { inHex 0x55; }
+op__mov_b_m() { inHex 0x56; }
+op__mov_b_a() { inHex 0x57; }
+
+op__mov_c_b() { inHex 0x60; }
+op__mov_c_c() { inHex 0x61; }
+op__mov_c_d() { inHex 0x112; }
+op__mov_c_e() { inHex 0x113; }
+op__mov_c_h() { inHex 0x114; }
+op__mov_c_l() { inHex 0x115; }
+op__mov_c_m() { inHex 0x116; }
+op__mov_c_a() { inHex 0x117; }
+
+op__mov_d_b() { inHex 0x62; }
+op__mov_d_c() { inHex 0x63; }
+op__mov_d_d() { inHex 0x64; }
+op__mov_d_e() { inHex 0x65; }
+op__mov_d_h() { inHex 0x66; }
+op__mov_d_l() { inHex 0x67; }
+op__mov_d_m() { inHex 0x70; }
+op__mov_d_a() { inHex 0x71; }
+
+op__mov_e_b() { inHex 0x3A; }
+op__mov_e_c() { inHex 0x3B; }
+op__mov_e_d() { inHex 0x5A; }
+op__mov_e_e() { inHex 0x5B; }
+op__mov_e_h() { inHex 0x5C; }
+op__mov_e_l() { inHex 0x5D; }
+op__mov_e_m() { inHex 0x5E; }
+op__mov_e_a() { inHex 0x5F; }
+
+op__mov_h_b() { inHex 0x3C; }
+op__mov_h_c() { inHex 0x3D; }
+op__mov_h_d() { inHex 0x3E; }
+op__mov_h_e() { inHex 0x3F; }
+op__mov_h_h() { inHex 0x40; }
+op__mov_h_l() { inHex 0x41; }
+op__mov_h_m() { inHex 0x42; }
+op__mov_h_a() { inHex 0x43; }
+
+op__mov_l_b() { inHex 0x44; }
+op__mov_l_c() { inHex 0x45; }
+op__mov_l_d() { inHex 0x6A; }
+op__mov_l_e() { inHex 0x6B; }
+op__mov_l_h() { inHex 0x6C; }
+op__mov_l_l() { inHex 0x6D; }
+op__mov_l_m() { inHex 0x6E; }
+op__mov_l_a() { inHex 0x6F; }
+
+op__mov_m_b() { inHex 0x46; }
+op__mov_m_c() { inHex 0x47; }
+op__mov_m_d() { inHex 0x48; }
+op__mov_m_e() { inHex 0x49; }
+op__mov_m_h() { inHex 0x4A; }
+op__mov_m_l() { inHex 0x4B; }
+#For xome reason, HLT is here where M_M could be.
+op__mov_m_a() { inHex 0x4D; }
+
+op__mov_a_b() { inHex 0x4E; }
+op__mov_a_c() { inHex 0x4F; }
+op__mov_a_d() { inHex 0x7A; }
+op__mov_a_e() { inHex 0x7B; }
+op__mov_a_h() { inHex 0x7C; }
+op__mov_a_l() { inHex 0x7D; }
+op__mov_a_m() { inHex 0x7E; }
+op__mov_a_a() { inHex 0x7F; }
+
+op__mov() {
+	ops=`echo $*|sed -e 's/[[:space:],]*/_/g' -e 's/_$//'`
+	ops=`lc $ops`
+	i=`op__mov${ops}` || abortRun "Bad parameters to MOV"
+	bytes $i 
+}
+
+

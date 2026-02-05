@@ -1,0 +1,12 @@
+
+op__cnc() {
+	op=`inHex 0xD4`
+	P=$*
+	P=`param ${P}`
+	P=`expr ${P}`
+
+	bytes $op
+	shortsReverse $P
+}
+
+

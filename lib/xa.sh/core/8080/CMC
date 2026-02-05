@@ -1,0 +1,2 @@
+op__cmc() { bytes `inHex 0x3F`; }
+

@@ -1,0 +1,9 @@
+
+op__ani() {
+	O=`inHex 0xE6`
+	P=`param $*`
+	P=`expr $P`
+	bytes $O $P
+}
+
+

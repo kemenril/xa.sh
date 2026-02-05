@@ -1,0 +1,44 @@
+#This is mostly low-level functions used by the assembler.  We also have a 
+# bytes function.
+
+shortsReverse () {
+	for I in $*; do
+		bytes `expr $I % 256` `expr $I / 256`
+	done
+}
+
+shortReverse () {
+	shortsReverse $*
+}
+
+shorts () {
+	for I in $*;do
+		bytes `expr $I / 256` `expr $I % 256`
+	done
+}
+
+short () {
+	shorts $*
+}
+
+bytes () {
+	BYTECOUNT=`echo $*|wc -w`
+	for b in $*;do
+		b=`echo "16 o ${b} 256 % n"|dc`
+		printf "\\x${b}"
+	done
+	PCAdd $BYTECOUNT
+}
+byte () {
+	bytes $*
+}
+
+
+#This one is a wrapper callable from the code.
+op__byte() {
+	P=`param $*`
+	P=`expr ${P}`
+	P=`alnum ${P}`
+	byte $P
+}
+

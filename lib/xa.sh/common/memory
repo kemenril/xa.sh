@@ -1,0 +1,33 @@
+#Function used to stash label addresses into shell variables, for later
+# use by the params module.
+
+#Not really a machine op, but it's just easier to handle everything the same
+op__label () {
+	if [ "${PASS}" -lt 2 ];then
+		for L in $*;do
+			eval addr__$L=${addr__PC}
+		done
+	fi
+}
+
+#Manipulate the program counter
+
+op__org () {
+	addr__PC=`param $1`
+}
+
+PCAdd () {
+	for N in $*;do
+		N=`param ${N}`
+		addr__PC=`expr ${addr__PC} + ${N}`
+	done 
+}
+
+PCSub() {
+	for N in $*;do
+		N=`param ${N}`
+		addr__PC=`expr ${addr__PC} + ${N}`
+	done
+}
+
+

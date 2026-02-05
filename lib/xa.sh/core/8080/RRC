@@ -1,0 +1,2 @@
+op__rrc() { bytes `inHex 0x0F`; }
+

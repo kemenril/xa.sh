@@ -1,0 +1,14 @@
+
+op__push_b() { inHex 0xC5; }
+op__push_d() { inHex 0xD5; }
+op__push_h() { inHex 0xE5; }
+op__push_psw() { inHex 0xF5; }
+
+op__push() {
+	P=$*
+	P=`alnum ${P}|lc`
+	O=`op__push_${P}` || abortRun "Bad parameters to PUSH."	
+	bytes $O
+}
+
+

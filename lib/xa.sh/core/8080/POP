@@ -1,0 +1,14 @@
+
+op__pop_b() { inHex 0xC1; }
+op__pop_d() { inHex 0xD1; }
+op__pop_h() { inHex 0xE1; }
+op__pop_psw() { inHex 0xF1; }
+
+op__pop() {
+	P=$*
+	P=`alnum ${P}|lc`
+	O=`op__pop_${P}` || abortRun "Bad parameters to POP."	
+	bytes $O
+}
+
+

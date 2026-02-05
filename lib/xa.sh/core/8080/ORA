@@ -1,0 +1,18 @@
+
+op__ora_b() { inHex 0xB0; }
+op__ora_c() { inHex 0xB1; }
+op__ora_d() { inHex 0xB2; }
+op__ora_e() { inHex 0xB3; }
+op__ora_h() { inHex 0xB4; }
+op__ora_l() { inHex 0xB5; }
+op__ora_m() { inHex 0xB6; }
+op__ora_a() { inHex 0xB7; }
+
+op__ora() {
+	P=$*
+	P=`alnum ${P}|lc`
+	O=`op__ora_${P}` || abortRun "Bad parameters to ORA."	
+	bytes $O
+}
+
+

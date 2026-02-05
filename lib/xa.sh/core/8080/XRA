@@ -1,0 +1,18 @@
+
+op__xra_b() { inHex 0xA8; }
+op__xra_c() { inHex 0xA9; }
+op__xra_d() { inHex 0xAA; }
+op__xra_e() { inHex 0xAB; }
+op__xra_h() { inHex 0xAC; }
+op__xra_l() { inHex 0xAD; }
+op__xra_m() { inHex 0xAE; }
+op__xra_a() { inHex 0xAF; }
+
+op__xra() {
+	P=$*
+	P=`alnum ${P}|lc`
+	O=`op__xra_${P}` || abortRun "Bad parameters to XRA."	
+	bytes $O
+}
+
+

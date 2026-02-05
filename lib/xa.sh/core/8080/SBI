@@ -1,0 +1,9 @@
+
+op__sbi() {
+	O=`inHex 0xDE`
+	P=`param $*`
+	P=`expr $P`
+	bytes $O $P
+}
+
+

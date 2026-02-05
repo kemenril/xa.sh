@@ -1,0 +1,12 @@
+
+op__jz() {
+	op=`inHex 0xCA`
+	P=$*
+	P=`param ${P}`
+	P=`expr ${P}`
+
+	bytes $op
+	shortsReverse $P
+}
+
+

@@ -1,0 +1,18 @@
+
+op__add_b() { inHex 0x50; }
+op__add_c() { inHex 0x51; }
+op__add_d() { inHex 0x52; }
+op__add_e() { inHex 0x53; }
+op__add_h() { inHex 0x54; }
+op__add_l() { inHex 0x55; }
+op__add_m() { inHex 0x56; }
+op__add_a() { inHex 0x57; }
+
+op__add() {
+	P=$*
+	P=`alnum ${P}|lc`
+	O=`op__add_${P}` || abortRun "Bad parameters to ADD."	
+	bytes $O
+}
+
+

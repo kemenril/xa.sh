@@ -1,0 +1,2 @@
+op__rnz() { bytes `inHex 0xC0`; }
+

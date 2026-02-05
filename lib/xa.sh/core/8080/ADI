@@ -1,0 +1,11 @@
+
+op__adi() {
+	op=`inHex 0xC6`
+	P=$*
+	P=`param ${P}`
+	P=`expr ${P}`
+
+	bytes $op $P
+}
+
+

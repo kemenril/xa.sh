@@ -1,0 +1,18 @@
+
+op__sub_b() { inHex 0x5A; }
+op__sub_c() { inHex 0x5B; }
+op__sub_d() { inHex 0x5C; }
+op__sub_e() { inHex 0x5D; }
+op__sub_h() { inHex 0x5E; }
+op__sub_l() { inHex 0x5F; }
+op__sub_m() { inHex 0x60; }
+op__sub_a() { inHex 0x61; }
+
+op__sub() {
+	P=$*
+	P=`alnum ${P}|lc`
+	O=`op__sub_${P}` || abortRun "Bad parameters to SUB."	
+	bytes $O
+}
+
+

@@ -1,0 +1,12 @@
+
+op__shld() {
+	op=`inHex 0x16`
+	P=$*
+	P=`param ${P}`
+	P=`expr ${P}`
+
+	bytes $op
+	shortsReverse $P
+}
+
+

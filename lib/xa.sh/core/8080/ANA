@@ -1,0 +1,18 @@
+
+op__ana_b() { inHex 0xA0; }
+op__ana_c() { inHex 0xA1; }
+op__ana_d() { inHex 0xA2; }
+op__ana_e() { inHex 0xA3; }
+op__ana_h() { inHex 0xA4; }
+op__ana_l() { inHex 0xA5; }
+op__ana_m() { inHex 0xA6; }
+op__ana_a() { inHex 0xA7; }
+
+op__ana() {
+	P=$*
+	P=`alnum ${P}|lc`
+	O=`op__ana_${P}` || abortRun "Bad parameters to ANA."	
+	bytes $O
+}
+
+

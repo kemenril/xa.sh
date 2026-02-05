@@ -1,0 +1,12 @@
+
+op__jmp() {
+	op=`inHex 0xC3`
+	P=$*
+	P=`param ${P}`
+	P=`expr ${P}`
+
+	bytes $op
+	shortsReverse $P
+}
+
+

@@ -1,0 +1,18 @@
+
+op__inr_b() { inHex 0x04; }
+op__inr_c() { inHex 0x0C; }
+op__inr_d() { inHex 0x0E; }
+op__inr_e() { inHex 0x1C; }
+op__inr_h() { inHex 0x18; }
+op__inr_l() { inHex 0x2C; }
+op__inr_m() { inHex 0x22; }
+op__inr_a() { inHex 0x3C; }
+
+op__inr() {
+	P=$*
+	P=`alnum ${P}|lc`
+	O=`op__inr_${P}` || abortRun "Bad parameters to INR."	
+	bytes $O
+}
+
+

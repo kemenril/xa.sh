@@ -1,0 +1,9 @@
+
+op__aci() {
+	O=`inHex 0xCE`
+	P=`param $*`
+	P=`expr $P`
+	bytes $O $P
+}
+
+
